@@ -18,7 +18,7 @@ export function useAuth() {
           // Redirect to products page on refresh if authenticated
           navigate('/');
         } catch (error) {
-          console.error("Failed to parse user data", error);
+          navigate('/')
         }
       }
       setLoading(false);
