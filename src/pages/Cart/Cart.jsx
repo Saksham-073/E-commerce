@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import CartItem from '../../components/CartItem/CartItem';
-import Notification from '../../components/Notification/Notification';
 import { useCart } from '../../context/CartContext';
 import './Cart.css';
 
