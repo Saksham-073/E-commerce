@@ -8,19 +8,33 @@ export function useAuth() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check if user is authenticated on mount
-    const token = localStorage.getItem('token');
-    if (token) {
-      setIsAuthenticated(true);
-      try {
-        const userData = JSON.parse(localStorage.getItem('user'));
-        setUser(userData);
-      } catch (error) {
-        console.error("Failed to parse user data", error);
+    const handleRefresh = () => {
+      const token = localStorage.getItem('token');
+      if (token) {
+        setIsAuthenticated(true);
+        try {
+          const userData = JSON.parse(localStorage.getItem('user'));
+          setUser(userData);
+          // Redirect to products page on refresh if authenticated
+          navigate('/');
+        } catch (error) {
+          console.error("Failed to parse user data", error);
+        }
       }
-    }
-    setLoading(false);
-  }, []);
+      setLoading(false);
+    };
+
+    // Add event listener for page load
+    window.addEventListener('load', handleRefresh);
+    
+    // Initial check
+    handleRefresh();
+
+    // Cleanup function
+    return () => {
+      window.removeEventListener('load', handleRefresh);
+    };
+  }, [navigate]);
 
   const login = async (username, password) => {
     try {
@@ -43,15 +57,13 @@ export function useAuth() {
       const data = await response.json();
       localStorage.setItem('token', data.token);
       
-      // In a real app, you'd typically make another request to get user details
-      // For this demo, we'll create a simple user object
       const userObj = { username };
       localStorage.setItem('user', JSON.stringify(userObj));
       
       setIsAuthenticated(true);
       setUser(userObj);
       setLoading(false);
-      navigate('/');
+      navigate('/'); // Redirect to products page after login
       return true;
     } catch (error) {
       console.error("Login error:", error);
