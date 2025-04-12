@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
-import useAuth from '../../hooks/useAuth';
+import useAuth from '../../hooks/useAuth.jsx';
 import Notification from '../../components/Notification/Notification';
 import './Login.css';
 
