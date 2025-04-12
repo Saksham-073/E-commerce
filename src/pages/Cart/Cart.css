@@ -1,0 +1,153 @@
+.cart-page {
+  padding: 40px 0;
+  background-color: #f8f9fa;
+}
+
+.page-title {
+  color: var(--secondary-color);
+  margin-bottom: 30px;
+  font-size: 32px;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.page-title:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 60px;
+  background-color: var(--secondary-color);
+  border-radius: 2px;
+}
+
+.empty-cart {
+  text-align: center;
+  padding: 70px 20px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: var(--box-shadow);
+}
+
+.empty-cart p {
+  margin-bottom: 24px;
+  font-size: 18px;
+  color: #666;
+  line-height: 1.6;
+}
+
+.cart-items {
+  margin-bottom: 40px;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-summary {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  padding: 30px;
+  margin-bottom: 30px;
+  transition: transform 0.2s ease;
+}
+
+.cart-summary:hover {
+  transform: translateY(-5px);
+}
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 0;
+  border-bottom: 2px solid #f0f0f0;
+  margin-bottom: 20px;
+}
+
+.total-label {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+}
+
+.total-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--secondary-color);
+  transition: color 0.3s ease;
+}
+
+.total-value:hover {
+  color: darken(var(--secondary-color), 10%);
+}
+
+.cart-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+  gap: 15px;
+}
+
+.cart-actions .btn {
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.cart-actions .btn-primary {
+  background-color: var(--secondary-color);
+  border: none;
+  color: white;
+}
+
+.cart-actions .btn-primary:hover {
+  background-color: darken(var(--secondary-color), 10%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.cart-actions .btn-outline {
+  background-color: transparent;
+  border: 2px solid #ddd;
+  color: #666;
+}
+
+.cart-actions .btn-outline:hover {
+  border-color: var(--secondary-color);
+  color: var(--secondary-color);
+}
+
+@media (max-width: 768px) {
+  .cart-page {
+    padding: 20px 15px;
+  }
+  
+  .page-title {
+    font-size: 26px;
+    text-align: center;
+  }
+  
+  .page-title:after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .cart-summary {
+    padding: 20px;
+  }
+  
+  .cart-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .cart-actions .btn {
+    width: 100%;
+    text-align: center;
+    padding: 14px;
+  }
+}
